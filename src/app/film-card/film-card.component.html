@@ -1,7 +1,7 @@
 <div *ngIf="isCardMode" class="film-card">
   <div class="bages-wrapper">
     <div class="year">{{ film.year }}</div>
-    <div class="budget">{{ film.money }}</div>
+    <div class="budget">{{ film.money | moneyShort }}</div>
   </div>
   <img
     src="../../assets/film-1.jpg"
@@ -22,6 +22,6 @@
   <div class="name">{{ film.name }}</div>
   <div class="bages-wrapper">
     <div class="year">{{ film.year }}</div>
-    <div class="budget">{{ film.money }}</div>
+    <div class="budget">{{ film.money | moneyShort }}</div>
   </div>
 </div>

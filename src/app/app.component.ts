@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  constructor() {}
+
   isDarkThemeIsActive = true;
   isCardMode = false;
   films = [
@@ -49,11 +51,23 @@ export class AppComponent {
     },
   ];
 
+  ngOnInit(): void {
+    this.isCardMode = JSON.parse(localStorage.getItem('isCardMode') || 'true');
+    this.isDarkThemeIsActive = JSON.parse(
+      localStorage.getItem('isDarkThemeIsActive') || 'false'
+    );
+  }
+
   switchDarkTheme(): void {
     this.isDarkThemeIsActive = !this.isDarkThemeIsActive;
+    localStorage.setItem(
+      'isDarkThemeIsActive',
+      this.isDarkThemeIsActive.toString()
+    );
   }
 
   switchListCards(): void {
     this.isCardMode = !this.isCardMode;
+    localStorage.setItem('isCardMode', this.isCardMode.toString());
   }
 }
