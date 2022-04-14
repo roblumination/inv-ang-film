@@ -1,2 +1,44 @@
-<app-film-card></app-film-card>
+<header [class.dark-theme]="isDarkThemeIsActive">
+  <div class="logo">Super Films</div>
+  <div class="controlls-wrapper">
+    <div class="tabs-wrapper" (click)="switchListCards()">
+      <div
+        class="variants-container"
+        [class.variants-contaner-active]="isCardMode"
+      >
+        <div class="variant">Cards</div>
+        <div class="variant">List</div>
+      </div>
+    </div>
+
+    <div class="switcher-wrapper" (click)="switchDarkTheme()">
+      <div
+        class="variants-container"
+        [class.variants-contaner-active]="!isDarkThemeIsActive"
+      >
+        <div class="variant">Light</div>
+        <div class="variant">Dark</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main [class.dark-theme]="isDarkThemeIsActive">
+  <div *ngIf="isCardMode" class="film-container-card">
+    <app-film-card
+      *ngFor="let film of films"
+      [film]="film"
+      [isCardMode]="isCardMode"
+    ></app-film-card>
+  </div>
+
+  <div *ngIf="!isCardMode" class="film-container-list">
+    <app-film-card
+      *ngFor="let film of films"
+      [film]="film"
+      [isCardMode]="isCardMode"
+    ></app-film-card>
+  </div>
+</main>
+
 <router-outlet></router-outlet>

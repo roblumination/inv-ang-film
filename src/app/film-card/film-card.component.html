@@ -1,1 +1,27 @@
-<p>film-card works!</p>
+<div *ngIf="isCardMode" class="film-card">
+  <div class="bages-wrapper">
+    <div class="year">{{ film.year }}</div>
+    <div class="budget">{{ film.money }}</div>
+  </div>
+  <img
+    src="../../assets/film-1.jpg"
+    alt="Film picture"
+    width="285"
+    height="360"
+  />
+  {{ film.name }}
+</div>
+
+<div *ngIf="!isCardMode" class="film-list-item">
+  <img
+    src="../../assets/film-1.jpg"
+    alt="Film picture"
+    width="auto"
+    height="80"
+  />
+  <div class="name">{{ film.name }}</div>
+  <div class="bages-wrapper">
+    <div class="year">{{ film.year }}</div>
+    <div class="budget">{{ film.money }}</div>
+  </div>
+</div>
