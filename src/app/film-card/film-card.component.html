@@ -4,7 +4,7 @@
     <div class="budget">{{ film.money | moneyShort }}</div>
   </div>
   <img
-    src="../../assets/film-1.jpg"
+    src="../../assets/{{ film.picture }}"
     alt="Film picture"
     width="285"
     height="360"
@@ -14,7 +14,7 @@
 
 <div *ngIf="!isCardMode" class="film-list-item">
   <img
-    src="../../assets/film-1.jpg"
+    src="../../assets/{{ film.picture }}"
     alt="Film picture"
     width="auto"
     height="80"
