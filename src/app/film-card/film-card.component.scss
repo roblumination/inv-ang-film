@@ -1,3 +1,10 @@
+.year {
+  background-color: #e8eb41;
+}
+.budget {
+  background-color: #35e75f;
+}
+
 .film-card {
   position: relative;
   width: 300px;
@@ -24,14 +31,7 @@
       margin: 5px 13px;
       padding: 3px;
       border-radius: 3px;
-    }
-
-    .year {
-      background-color: #f00;
-      color: #fff;
-    }
-    .budget {
-      background-color: #ff0;
+      box-shadow: 0 1px 3px #0006;
       color: #000;
     }
   }
@@ -71,14 +71,6 @@
       margin: 4px 13px;
       padding: 3px;
       border-radius: 3px;
-    }
-
-    .year {
-      background-color: #f00;
-      color: #fff;
-    }
-    .budget {
-      background-color: #ff0;
       color: #000;
     }
   }

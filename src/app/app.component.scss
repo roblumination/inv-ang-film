@@ -45,10 +45,18 @@ header {
 
         .variant {
           // background-color: #ff03;
+          display: flex;
+          justify-content: center;
+          align-items: center;
           min-width: 100px;
           width: 100px;
+          height: 40px;
           cursor: pointer;
           text-align: center;
+
+          &:hover {
+            background-color: #8885;
+          }
         }
         .varian-active {
           transform: translateX(100px);
@@ -62,6 +70,7 @@ header {
 }
 
 header.dark-theme {
+  // background-color: lighten(rgba($bg-dark, 0.7), 20%);
   background-color: rgba($bg-dark, 0.7);
   color: $fg-dark;
 }
@@ -91,7 +100,8 @@ main {
 }
 
 main.dark-theme {
-  background-color: $bg-dark;
+  // background-color: $bg-dark;
+  background-color: lighten($bg-dark, 10%);
   color: $fg-dark;
 }
 
@@ -106,6 +116,14 @@ main.dark-theme {
     .controlls-wrapper {
       width: 100%;
       justify-content: center;
+      .switcher-wrapper,
+      .tabs-wrapper {
+        .variants-container {
+          .variant {
+            height: 30px;
+          }
+        }
+      }
     }
   }
   main {
