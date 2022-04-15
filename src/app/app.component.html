@@ -4,7 +4,7 @@
     <div class="tabs-wrapper" (click)="switchListCards()">
       <div
         class="variants-container"
-        [class.variants-contaner-active]="isCardMode"
+        [class.variants-container-active]="isCardMode"
       >
         <div class="variant">List</div>
         <div class="variant">Cards</div>
@@ -14,7 +14,7 @@
     <div class="switcher-wrapper" (click)="switchDarkTheme()">
       <div
         class="variants-container"
-        [class.variants-contaner-active]="!isDarkThemeIsActive"
+        [class.variants-container-active]="!isDarkThemeIsActive"
       >
         <div class="variant">Dark</div>
         <div class="variant">Light</div>
@@ -24,13 +24,24 @@
 </header>
 
 <main [class.dark-theme]="isDarkThemeIsActive">
-  <div *ngIf="isCardMode" class="film-container-card">
+  <div
+    class="movies-container"
+    [ngClass]="!isCardMode ? 'movies-container-list' : 'movies-container-cards'"
+  >
     <app-film-card
       *ngFor="let film of films"
       [film]="film"
       [isCardMode]="isCardMode"
     ></app-film-card>
   </div>
+  <!-- <div *ngIf="isCardMode" class="film-container-card">
+    <app-film-card
+      *ngFor="let film of films"
+      [film]="film"
+      [isCardMode]="isCardMode"
+    ></app-film-card>
+  </div>
+  <div *ngIf="isCardMode" class="film-container-card"></div>
 
   <div *ngIf="!isCardMode" class="film-container-list">
     <app-film-card
@@ -38,7 +49,7 @@
       [film]="film"
       [isCardMode]="isCardMode"
     ></app-film-card>
-  </div>
+  </div> -->
 </main>
 
 <router-outlet></router-outlet>

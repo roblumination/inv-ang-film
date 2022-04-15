@@ -1,4 +1,4 @@
-<div *ngIf="isCardMode" class="film-card">
+<!-- <div *ngIf="isCardMode" class="film-card">
   <div class="bages-wrapper">
     <div class="year">{{ film.year }}</div>
     <div class="budget">{{ film.money | moneyShort }}</div>
@@ -19,4 +19,17 @@
     <div class="year">{{ film.year }}</div>
     <div class="budget">{{ film.money | moneyShort }}</div>
   </div>
+</div> -->
+
+<div
+  class="movie-item"
+  [ngClass]="!isCardMode ? 'movie-item-list' : 'movie-item-card'"
+>
+  <div class="img-container">
+    <div class="year">{{ film.year }}</div>
+    <div class="budget">{{ film.money | moneyShort }}</div>
+    <img src="../../assets/{{ film.picture }}" alt="Film picture" />
+  </div>
+
+  <div class="name">{{ film.name }}</div>
 </div>

@@ -1,8 +1,21 @@
+@import "../../colors.scss";
+
 .year {
   background-color: #e8eb41;
 }
 .budget {
   background-color: #35e75f;
+}
+
+.movie-item {
+  background-color: #f00;
+
+  &-card {
+    width: 300px;
+    height: 430px;
+  }
+  &-list {
+  }
 }
 
 .film-card {
@@ -43,7 +56,7 @@
   flex-direction: row;
   border: 1px solid #8888;
   width: 100%;
-  margin-top: 15px;
+  // margin-top: 15px;
   // max-width: 900px;
   height: $height;
   box-shadow: 0 5px 8px #0003;

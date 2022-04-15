@@ -1,9 +1,31 @@
-let films = [
-  { name: 'NFkesdlf', year: 2000, money: 1500000, picture: 'film-1.jpg' },
-  { name: 'NFkesdlf', year: 2001, money: 150000, picture: 'film-1.jpg' },
-  { name: 'NFkesdlf', year: 1998, money: 300, picture: 'film-1.jpg' },
-  { name: 'NFkesdlf', year: 998, money: 100000, picture: 'film-1.jpg' },
-  { name: 'NFkesdlf', year: 3001, money: 31300, picture: 'film-1.jpg' },
-  { name: 'NFkesdlf', year: 1995, money: 435000, picture: 'film-1.jpg' },
-  { name: 'NFkesdlf', year: 2002, money: 513531, picture: 'film-1.jpg' },
+import Movie from './IMovie';
+
+export const FILMS: Movie[] = [
+  {
+    id: 0,
+    name: 'VSCode Anventures',
+    year: 1998,
+    money: 10,
+    picture: 'film-3.jpg',
+    actors: ['Tim Bom', 'Alaba babla'],
+    creationDate: new Date(),
+  },
+  {
+    id: 1,
+    name: 'Master or Main?',
+    year: 2023,
+    money: 313004124142,
+    picture: 'film-5.jpg',
+    actors: ['Tim Bom', 'Alaba babla'],
+    creationDate: new Date(),
+  },
+  {
+    id: 2,
+    name: 'Mining on CPU',
+    year: 2015,
+    money: 435000,
+    picture: 'film-6.jpg',
+    actors: ['Tim Bom', 'Alaba babla'],
+    creationDate: new Date(),
+  },
 ];
