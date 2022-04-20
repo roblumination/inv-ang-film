@@ -1,14 +1,28 @@
-import { Component, OnInit, Input, Pipe } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Pipe,
+  Output,
+  EventEmitter,
+} from '@angular/core';
+// import { EventEmitter } from 'stream';
+import Movie from '../movie';
+// import IMovie from '../IMovie';
 
 @Component({
   selector: 'app-film-card',
   templateUrl: './film-card.component.html',
   styleUrls: ['./film-card.component.scss'],
 })
-export class FilmCardComponent implements OnInit {
+export class FilmCardComponent {
   @Input() film: any;
   @Input() isCardMode: boolean = false;
-  constructor() {}
+  @Input() isDarkThemeIsActive: boolean = false;
+  @Input() isEditMode: boolean = false;
+  @Output() deleteRequest: EventEmitter<Movie> = new EventEmitter<Movie>();
 
-  ngOnInit(): void {}
+  deleteMovie(movie: Movie) {
+    this.deleteRequest.emit(movie);
+  }
 }

@@ -1,0 +1,85 @@
+@import "../../colors.scss";
+:host {
+  position: absolute;
+  z-index: 2000;
+  top: 0px;
+}
+
+button {
+  cursor: pointer;
+  // width: 100px;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  background-color: #0000;
+  &:hover {
+    background-color: #8883;
+  }
+  &:active {
+    background-color: #8886;
+  }
+}
+
+input {
+  border: 1px solid #8886;
+  border-radius: 5px;
+  padding: 5px;
+  // box-shadow: inset 0 1px 1px #0003, inset 0 2px 2px #0003;
+  background-color: #8882;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.modal-background {
+  @include flex-center();
+  background-color: #3333;
+  top: 0px;
+  width: 100vw;
+  height: 100vh;
+
+  .modal {
+    padding: 15px;
+    border-radius: 15px;
+    background-color: $bg-light;
+    box-shadow: 0 5px 15px #0003, 0 2px 5px #0003;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      // border: 1px solid #00f;
+      .form-block {
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
+        border-bottom: 1px solid #8886;
+      }
+      .array {
+        // background-color: #ff06;
+        & * {
+          padding: 5px;
+        }
+        input {
+          border-radius: 5px 0px 0px 5px;
+        }
+        button {
+          margin: 0;
+          border: 1px solid #8886;
+          border-radius: 0 5px 5px 0;
+        }
+
+        .add-button {
+          border: none;
+          border-radius: 5px;
+        }
+      }
+    }
+    .buttons {
+      button {
+        width: 100px;
+      }
+    }
+  }
+}

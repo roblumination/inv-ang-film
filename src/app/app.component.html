@@ -1,6 +1,16 @@
 <header [class.dark-theme]="isDarkThemeIsActive">
   <div class="logo">Dev Films</div>
   <div class="controlls-wrapper">
+    <div class="edit-wrapper" (click)="switchEditMode()">
+      <div
+        class="variants-container"
+        [class.variants-container-active]="isEditMode"
+      >
+        <div class="variant">Edit</div>
+        <div class="variant done">Done</div>
+      </div>
+    </div>
+
     <div class="tabs-wrapper" (click)="switchListCards()">
       <div
         class="variants-container"
@@ -24,32 +34,43 @@
 </header>
 
 <main [class.dark-theme]="isDarkThemeIsActive">
+  <section class="tools">
+    <div class="search">
+      <input type="text" placeholder="filter" [(ngModel)]="searchedValue" />
+    </div>
+    <div class="radio">
+      <input type="radio" name="sort-by" id="name" />Name
+      <input type="radio" name="sort-by" id="name" />Year
+      <input type="radio" name="sort-by" id="name" />Creation Date
+    </div>
+  </section>
   <div
     class="movies-container"
     [ngClass]="!isCardMode ? 'movies-container-list' : 'movies-container-cards'"
   >
+    <div
+      *ngIf="isEditMode"
+      (click)="switchModalMode()"
+      class="add-new"
+      [ngClass]="!isCardMode ? 'add-new-list' : 'add-new-card'"
+    >
+      +
+    </div>
     <app-film-card
-      *ngFor="let film of films"
+      *ngFor="let film of films | appSearch: searchedValue"
       [film]="film"
       [isCardMode]="isCardMode"
+      [isEditMode]="isEditMode"
+      [isDarkThemeIsActive]="isDarkThemeIsActive"
+      (deleteRequest)="removeMovie($event)"
     ></app-film-card>
   </div>
-  <!-- <div *ngIf="isCardMode" class="film-container-card">
-    <app-film-card
-      *ngFor="let film of films"
-      [film]="film"
-      [isCardMode]="isCardMode"
-    ></app-film-card>
-  </div>
-  <div *ngIf="isCardMode" class="film-container-card"></div>
-
-  <div *ngIf="!isCardMode" class="film-container-list">
-    <app-film-card
-      *ngFor="let film of films"
-      [film]="film"
-      [isCardMode]="isCardMode"
-    ></app-film-card>
-  </div> -->
 </main>
+
+<app-modal
+  [isModal]="isModalMode"
+  (closeModal)="isModalMode = $event"
+  (requestAdd)="addMovie($event)"
+></app-modal>
 
 <router-outlet></router-outlet>

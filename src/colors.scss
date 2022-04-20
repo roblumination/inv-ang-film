@@ -1,7 +1,19 @@
 $bg-light: #fff;
+$bg-light-2: #eee;
+$bg-light-3: #ddd;
 $fg-light: #000;
 $border-light: #ccc;
 
 $bg-dark: #000;
+$bg-dark-2: #222;
+$bg-dark-3: #333;
 $fg-dark: #fff;
-$border-dark: #666;
+$border-dark: #444;
+
+$bg-close: #e41;
+$bg-done: #3f6;
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
