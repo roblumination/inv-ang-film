@@ -1,4 +1,4 @@
-<header [class.dark-theme]="isDarkThemeIsActive">
+<!-- <header [class.dark-theme]="isDarkThemeIsActive">
   <div class="logo">Dev Films</div>
   <div class="controlls-wrapper">
     <div class="edit-wrapper" (click)="switchEditMode()">
@@ -31,9 +31,17 @@
       </div>
     </div>
   </div>
-</header>
+</header> -->
+<app-header
+  [isCardMode]="isCardView"
+  [isDarkThemeIsActive]="isDarkThemeActive"
+  [isEditMode]="isEditMode"
+  (changeCard)="isCardView = $event"
+  (changeEdit)="isEditMode = $event"
+  (changeTheme)="isDarkThemeActive = $event"
+></app-header>
 
-<main [class.dark-theme]="isDarkThemeIsActive">
+<main [class.dark-theme]="isDarkThemeActive">
   <section class="tools">
     <div class="search">
       <input type="text" placeholder="filter" [(ngModel)]="searchedValue" />
@@ -61,30 +69,31 @@
   </section>
   <div
     class="movies-container"
-    [ngClass]="!isCardMode ? 'movies-container-list' : 'movies-container-cards'"
+    [ngClass]="!isCardView ? 'movies-container-list' : 'movies-container-cards'"
   >
     <div
       *ngIf="isEditMode"
       (click)="switchModalMode()"
       class="add-new"
-      [ngClass]="!isCardMode ? 'add-new-list' : 'add-new-card'"
+      [ngClass]="!isCardView ? 'add-new-list' : 'add-new-card'"
     >
       +
     </div>
     <app-film-card
       *ngFor="let film of films | appSearch: searchedValue"
       [film]="film"
-      [isCardMode]="isCardMode"
+      [isCardMode]="isCardView"
       [isEditMode]="isEditMode"
-      [isDarkThemeIsActive]="isDarkThemeIsActive"
+      [isDarkThemeIsActive]="isDarkThemeActive"
       (deleteRequest)="removeMovie($event)"
     ></app-film-card>
   </div>
 </main>
 
 <app-modal
-  [isModal]="isModalMode"
-  (closeModal)="isModalMode = $event"
+  [isModal]="isModalShows"
+  [isDarkThemeActive]="isDarkThemeActive"
+  (closeModal)="isModalShows = $event"
   (requestAdd)="addMovie($event)"
 ></app-modal>
 

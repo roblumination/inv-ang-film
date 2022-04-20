@@ -10,6 +10,7 @@ import Movie from '../movie';
 })
 export class ModalComponent /*implements OnInit*/ {
   @Input() isModal!: boolean;
+  @Input() isDarkThemeActive: boolean = false;
   @Output() closeModal = new EventEmitter<boolean>();
   @Output() requestAdd = new EventEmitter<Movie>();
 

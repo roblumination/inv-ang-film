@@ -1,26 +1,3 @@
-<!-- <div *ngIf="isCardMode" class="film-card">
-  <div class="bages-wrapper">
-    <div class="year">{{ film.year }}</div>
-    <div class="budget">{{ film.money | moneyShort }}</div>
-  </div>
-  <img
-    src="../../assets/{{ film.picture }}"
-    alt="Film picture"
-    width="285"
-    height="360"
-  />
-  {{ film.name }}
-</div>
-
-<div *ngIf="!isCardMode" class="film-list-item">
-  <img src="../../assets/{{ film.picture }}" alt="Film picture" />
-  <div class="name">{{ film.name }}</div>
-  <div class="bages-wrapper">
-    <div class="year">{{ film.year }}</div>
-    <div class="budget">{{ film.money | moneyShort }}</div>
-  </div>
-</div> -->
-
 <div
   class="movie-item"
   [ngClass]="!isCardMode ? 'movie-item-list' : 'movie-item-card'"
@@ -29,15 +6,21 @@
   <button *ngIf="isEditMode" class="button-close" (click)="deleteMovie(film)">
     +
   </button>
+
   <img src="../../assets/{{ film.picture }}" alt="Film picture" />
+
   <div *ngIf="isCardMode" class="name">{{ film.name }}</div>
+
   <div class="description">
     <div *ngIf="!isCardMode" class="name">{{ film.name }}</div>
+
     <div class="bages">
       <div class="year bage">{{ film.year }}</div>
       <div class="budget bage">{{ film.money | moneyShort }}</div>
     </div>
-    <section>{{ film.actors }}</section>
+
+    <section>{{ film.actors.join(", ") }}</section>
+
     <section class="creation-date">
       {{ film.creationDate | dateFormatUa }}
     </section>

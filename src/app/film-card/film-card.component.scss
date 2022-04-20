@@ -9,10 +9,9 @@
 
 .movie-item {
   position: relative;
-  background-color: $bg-light;
   border-radius: 7px;
+  background-color: $bg-light;
   border: 1px solid $border-light;
-  // overflow: hidden;
   box-shadow: 0 5px 15px #0003, 0 2px 3px #0004;
 
   .creation-date {
@@ -41,6 +40,11 @@
   &-card {
     width: 270px;
     height: 425px;
+    // @include flex-center();
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    align-items: center;
 
     img {
       margin: 5px;
@@ -54,13 +58,18 @@
     }
     .description {
       transition: all 0.2s;
+      width: 240px;
       padding: 5px;
       border-radius: 5px;
       border: inherit;
-      transform: translateY(-50%);
+      transform: translateY(-100%);
       background-color: inherit;
+      background-color: #222c;
+      border-color: #888;
+      color: #fff;
       box-shadow: 0 7px 20px #0002, 0 4px 8px #0002;
       opacity: 0;
+      backdrop-filter: blur(20px);
 
       .bages {
         padding: 5px;
@@ -68,7 +77,7 @@
         display: flex;
         justify-content: space-between;
         flex-direction: row;
-        background-color: #8883;
+        background-color: #fff3;
       }
 
       .creation-date {
@@ -83,7 +92,7 @@
         transform: scale(1.5) rotate(135deg);
       }
       .description {
-        transform: translateY(10px);
+        transform: translateY(calc(-100% - 35px));
         opacity: 1;
       }
     }

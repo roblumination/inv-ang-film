@@ -11,9 +11,9 @@ import { AppSearchPipe } from './app-search.pipe';
 })
 export class AppComponent implements OnInit {
   constructor() {}
-  isDarkThemeIsActive: boolean = true;
-  isCardMode: boolean = false;
-  isModalMode: boolean = false;
+  isDarkThemeActive: boolean = true;
+  isCardView: boolean = true;
+  isModalShows: boolean = false;
   isEditMode: boolean = false;
 
   films = FILMS;
@@ -21,27 +21,27 @@ export class AppComponent implements OnInit {
   searchedValue: string = '';
 
   ngOnInit(): void {
-    this.isCardMode = JSON.parse(localStorage.getItem('isCardMode') || 'true');
-    this.isDarkThemeIsActive = JSON.parse(
-      localStorage.getItem('isDarkThemeIsActive') || 'false'
+    this.isCardView = JSON.parse(localStorage.getItem('isCardView') || 'true');
+    this.isDarkThemeActive = JSON.parse(
+      localStorage.getItem('isDarkThemeActive') || 'false'
     );
   }
 
-  ngOnChanges(): void {
-    console.log('test');
-  }
+  // ngOnChanges(): void {
+  //   console.log('test');
+  // }
 
-  switchDarkTheme(): void {
-    this.isDarkThemeIsActive = !this.isDarkThemeIsActive;
-    localStorage.setItem(
-      'isDarkThemeIsActive',
-      this.isDarkThemeIsActive.toString()
-    );
-  }
+  // switchDarkTheme(): void {
+  //   this.isDarkThemeIsActive = !this.isDarkThemeIsActive;
+  //   localStorage.setItem(
+  //     'isDarkThemeIsActive',
+  //     this.isDarkThemeIsActive.toString()
+  //   );
+  // }
 
-  switchEditMode(): void {
-    this.isEditMode = !this.isEditMode;
-  }
+  // switchEditMode(): void {
+  //   this.isEditMode = !this.isEditMode;
+  // }
 
   addMovie(movie: Movie): void {
     // console.log('Got it!');
@@ -55,14 +55,14 @@ export class AppComponent implements OnInit {
     });
   }
 
-  switchListCards(): void {
-    this.isCardMode = !this.isCardMode;
-    localStorage.setItem('isCardMode', this.isCardMode.toString());
-  }
+  // switchListCards(): void {
+  //   this.isCardMode = !this.isCardMode;
+  //   localStorage.setItem('isCardMode', this.isCardMode.toString());
+  // }
 
   switchModalMode(): void {
-    this.isModalMode = !this.isModalMode;
-    console.log(this.isModalMode);
+    this.isModalShows = !this.isModalShows;
+    console.log(this.isModalShows);
   }
 
   sortFilms(sortParam: string): void {

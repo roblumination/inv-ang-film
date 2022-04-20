@@ -11,6 +11,16 @@
 }
 
 body {
-  background-color: #f00;
+  // background-color: #f0f;
+  position: relative;
   min-width: 320px;
+}
+
+input {
+  border-radius: 5px;
+  padding: 5px;
+  border: 1px solid #888;
+  &:focus {
+    outline: none;
+  }
 }
