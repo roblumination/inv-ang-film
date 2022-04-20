@@ -38,7 +38,13 @@
           <label>Actors</label>
           <div *ngFor="let control of ActorsArray.controls; index as i">
             <input type="text" [formControlName]="i" />
-            <button type="button" (click)="removeActorsForm(i)">DEL</button>
+            <button
+              type="button"
+              class="delete-button"
+              (click)="removeActorsForm(i)"
+            >
+              +
+            </button>
           </div>
           <button class="add-button" type="button" (click)="addActorsForm()">
             Add
