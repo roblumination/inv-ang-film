@@ -7,23 +7,44 @@ export const FILMS: Movie[] = [
     200000,
     'film-3.jpg',
     ['Tim Bom', 'Alaba babla'],
-    0
+    0,
+    new Date('02-04-2022')
   ),
   new Movie(
     'Master or Main?',
     2023,
-    200000,
+    46486,
     'film-5.jpg',
     ['Tim Bom', 'Alaba babla'],
-    1
+    1,
+    new Date('03-17-2022')
   ),
   new Movie(
     'Mining on CPU',
     2015,
-    200000,
+    3511667671,
     'film-6.jpg',
     ['Tim Bom', 'Alaba babla'],
-    2
+    2,
+    new Date('05-16-2019')
+  ),
+  new Movie(
+    'DOS',
+    2015,
+    3535315,
+    'film-1.jpg',
+    ['Tim Bom', 'Alaba babla'],
+    2,
+    new Date('9-03-2018')
+  ),
+  new Movie(
+    'Angular for kids',
+    2015,
+    1355,
+    'film-2.jpg',
+    ['Kids', 'Teacher', 'Angular'],
+    2,
+    new Date('12-30-2002')
   ),
 ];
 // export const FILMS: IMovie[] = [

@@ -17,8 +17,7 @@ export class AppComponent implements OnInit {
   isEditMode: boolean = false;
 
   films = FILMS;
-  sortedFilms = this.films;
-  searchedFilms = this.sortedFilms;
+  // films = this.dryFilms;
   searchedValue: string = '';
 
   ngOnInit(): void {
@@ -64,5 +63,30 @@ export class AppComponent implements OnInit {
   switchModalMode(): void {
     this.isModalMode = !this.isModalMode;
     console.log(this.isModalMode);
+  }
+
+  sortFilms(sortParam: string): void {
+    if (sortParam == 'name') {
+      this.films.sort((a, b) => {
+        if (a.name == b.name) return 0;
+        return a.name > b.name ? 1 : -1;
+      });
+    }
+    if (sortParam == 'year') {
+      this.films.sort((a, b) => {
+        if (a.year == b.year) return 0;
+        return a.year > b.year ? 1 : -1;
+      });
+    }
+    if (sortParam == 'date') {
+      this.films.sort((a, b) => {
+        if (a.creationDate == b.creationDate) return 0;
+        return a.creationDate > b.creationDate ? 1 : -1;
+      });
+    }
+    // this.films.sort((a, b) => {
+    //   if (a[`${sortParam}`] > b[`${sortParam}`]) return 0;
+    //   return a[`${sortParam}`] > b[`${sortParam}`] ? 1 : -1;
+    // });
   }
 }

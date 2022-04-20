@@ -7,7 +7,8 @@ export default class Movie implements IMovie {
     money: number,
     picture: string,
     actors: string[],
-    id: number = Date.now()
+    id: number = Date.now(),
+    date: Date = new Date()
   ) {
     this.id = id;
     this.name = name;
@@ -15,7 +16,7 @@ export default class Movie implements IMovie {
     this.money = money;
     this.picture = picture;
     this.actors = actors;
-    this.creationDate = new Date();
+    this.creationDate = date;
   }
   id: number;
   name: string;

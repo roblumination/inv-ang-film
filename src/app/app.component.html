@@ -39,9 +39,24 @@
       <input type="text" placeholder="filter" [(ngModel)]="searchedValue" />
     </div>
     <div class="radio">
-      <input type="radio" name="sort-by" id="name" />Name
-      <input type="radio" name="sort-by" id="name" />Year
-      <input type="radio" name="sort-by" id="name" />Creation Date
+      <input
+        type="radio"
+        name="sort-by"
+        id="name"
+        (click)="sortFilms('name')"
+      />Name
+      <input
+        type="radio"
+        name="sort-by"
+        id="year"
+        (click)="sortFilms('year')"
+      />Year
+      <input
+        type="radio"
+        name="sort-by"
+        id="date"
+        (click)="sortFilms('date')"
+      />Creation Date
     </div>
   </section>
   <div
