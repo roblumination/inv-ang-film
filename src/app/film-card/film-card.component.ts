@@ -20,9 +20,14 @@ export class FilmCardComponent {
   @Input() isCardMode: boolean = false;
   @Input() isDarkThemeIsActive: boolean = false;
   @Input() isEditMode: boolean = false;
+  fav: boolean = false;
   @Output() deleteRequest: EventEmitter<Movie> = new EventEmitter<Movie>();
 
   deleteMovie(movie: Movie) {
     this.deleteRequest.emit(movie);
+  }
+
+  toggleFavorite() {
+    this.fav = !this.fav;
   }
 }

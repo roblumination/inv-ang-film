@@ -16,6 +16,7 @@
 
     <div class="bages">
       <div class="year bage">{{ film.year }}</div>
+      <div class="button-heart" [class.active]="fav" (click)="toggleFavorite()">❤</div>
       <div class="budget bage">{{ film.money | moneyShort }}</div>
     </div>
 

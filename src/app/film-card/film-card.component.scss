@@ -72,12 +72,47 @@
       backdrop-filter: blur(20px);
 
       .bages {
-        padding: 5px;
+        position: relative;
         border-radius: 2px;
         display: flex;
         justify-content: space-between;
         flex-direction: row;
         background-color: #fff3;
+        // padding: 5px;
+
+        .bage {
+          margin: 5px;
+        }
+
+        .button-heart {
+          position: absolute;
+          margin: 0px;
+          left: 50%;
+          height: 100%;
+          width: 50px;
+          border-radius: 5px;
+          text-align: center;
+          font-size: 1.2rem;
+          transform: translateX(-50%);
+          padding: 5px;
+          // background-color: #fff3;
+          &:hover {
+            background-color: #fff3;
+          }
+
+          &:active {
+            background-color: #8886;
+          }
+          cursor: pointer;
+          user-select: none;
+        }
+
+        .active {
+          background-color: #f43;
+          &:hover {
+            background-color: #c11;
+          }
+        }
       }
 
       .creation-date {
@@ -121,13 +156,43 @@
         right: 5px;
         top: 5px;
         display: flex;
-        justify-content: space-between;
-        flex-direction: row;
+        // justify-content: space-between;
+        // flex-direction: row;
         .bage {
           padding: 5px;
           margin-left: 5px;
           border-radius: 4px;
           background-color: #8883;
+        }
+
+        .button-heart {
+          order: 2;
+          margin-left: 5px;
+          left: 50%;
+          height: 100%;
+          width: 30px;
+          border-radius: 5px;
+          text-align: center;
+          // font-size: 1.2rem;
+          padding: 5px;
+          // background-color: #fff3;
+          &:hover {
+            background-color: #8883;
+          }
+
+          &:active {
+            background-color: #8886;
+          }
+          cursor: pointer;
+          user-select: none;
+        }
+
+        .active {
+          background-color: #f43;
+          color: #fff;
+          &:hover {
+            background-color: #f98;
+          }
         }
       }
 
@@ -155,5 +220,21 @@
 @media (max-width: 480px) {
   .movie-item {
     box-shadow: 0 2px 5px #0003, 0 1px 2px #0003;
+    &-list {
+      .description {
+        .bages {
+          // position: absolute;
+          // bottom: 0px;
+          top: auto;
+          right: auto;
+          bottom: 5px;
+          // top: auto;
+          // left: 0px;
+          .button-heart {
+            order: -1;
+          }
+        }
+      }
+    }
   }
 }
