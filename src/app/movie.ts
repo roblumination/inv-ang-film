@@ -17,6 +17,7 @@ export default class Movie implements IMovie {
     this.picture = picture;
     this.actors = actors;
     this.creationDate = date;
+    this.isFavorite = false;
   }
   id: number;
   name: string;
@@ -25,4 +26,5 @@ export default class Movie implements IMovie {
   picture: string;
   actors: string[];
   creationDate: Date;
+  isFavorite: boolean;
 }

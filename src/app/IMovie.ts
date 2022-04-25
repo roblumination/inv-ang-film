@@ -6,4 +6,5 @@ export default interface IMovie {
   picture: string;
   actors: string[];
   creationDate: Date;
+  isFavorite: boolean;
 }
