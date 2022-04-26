@@ -7,10 +7,9 @@ export default class Movie implements IMovie {
     money: number,
     picture: string,
     actors: string[],
-    id: number = Date.now(),
     date: Date = new Date()
   ) {
-    this.id = id;
+    this.id = Movie.generateUniqueId();
     this.name = name;
     this.year = year;
     this.money = money;
@@ -27,4 +26,8 @@ export default class Movie implements IMovie {
   actors: string[];
   creationDate: Date;
   isFavorite: boolean;
+
+  static generateUniqueId(): number {
+    return ~~(Math.random() * 10000000000);
+  }
 }

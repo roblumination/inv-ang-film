@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FILMS } from './mock-films';
 import Movie from './IMovie';
-import { FormsModule } from '@angular/forms';
-import { AppSearchPipe } from './app-search.pipe';
+import Moviee from './movie';
+import { MovieServiceService } from './movie-service.service';
 
 @Component({
   selector: 'app-root',
@@ -10,55 +9,47 @@ import { AppSearchPipe } from './app-search.pipe';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  constructor() {}
+  constructor(private movieService: MovieServiceService) {}
+
   isDarkThemeActive: boolean = true;
   isCardView: boolean = true;
   isModalShows: boolean = false;
   isEditMode: boolean = false;
 
-  films = FILMS;
+  movies: Movie[] = [];
   // films = this.dryFilms;
   searchedValue: string = '';
 
   ngOnInit(): void {
+    this.getMovies();
     this.isCardView = JSON.parse(localStorage.getItem('isCardView') || 'true');
     this.isDarkThemeActive = JSON.parse(
       localStorage.getItem('isDarkThemeActive') || 'false'
     );
   }
 
-  // ngOnChanges(): void {
-  //   console.log('test');
-  // }
+  getVarFromLocalStorage(param: string, defaultValue: any) {
+    return JSON.parse(localStorage.getItem(param) || defaultValue.toString());
+  }
 
-  // switchDarkTheme(): void {
-  //   this.isDarkThemeIsActive = !this.isDarkThemeIsActive;
-  //   localStorage.setItem(
-  //     'isDarkThemeIsActive',
-  //     this.isDarkThemeIsActive.toString()
-  //   );
-  // }
-
-  // switchEditMode(): void {
-  //   this.isEditMode = !this.isEditMode;
-  // }
+  getMovies(): void {
+    this.movies = this.movieService.getMoviesAll();
+  }
 
   addMovie(movie: Movie): void {
-    // console.log('Got it!');
-    // console.log(movie);
-    this.films.push(movie);
+    this.movieService.addMovie(movie);
   }
 
-  removeMovie(movie: Movie): void {
-    this.films = this.films.filter((mov) => {
-      return mov !== movie;
-    });
+  removeMovie(id: any): void {
+    this.movieService.deleteMovie(id);
+    this.getMovies();
   }
 
-  // switchListCards(): void {
-  //   this.isCardMode = !this.isCardMode;
-  //   localStorage.setItem('isCardMode', this.isCardMode.toString());
-  // }
+  toggleFavorite(id: any) {
+    const isCurrentFavorite = this.movieService.getMovieById(id).isFavorite;
+    this.movieService.setMovieIsFavorite(id, !isCurrentFavorite);
+    this.getMovies();
+  }
 
   switchModalMode(): void {
     this.isModalShows = !this.isModalShows;
@@ -67,26 +58,22 @@ export class AppComponent implements OnInit {
 
   sortFilms(sortParam: string): void {
     if (sortParam == 'name') {
-      this.films.sort((a, b) => {
+      this.movies.sort((a, b) => {
         if (a.name == b.name) return 0;
         return a.name > b.name ? 1 : -1;
       });
     }
     if (sortParam == 'year') {
-      this.films.sort((a, b) => {
+      this.movies.sort((a, b) => {
         if (a.year == b.year) return 0;
         return a.year > b.year ? 1 : -1;
       });
     }
     if (sortParam == 'date') {
-      this.films.sort((a, b) => {
+      this.movies.sort((a, b) => {
         if (a.creationDate == b.creationDate) return 0;
         return a.creationDate > b.creationDate ? 1 : -1;
       });
     }
-    // this.films.sort((a, b) => {
-    //   if (a[`${sortParam}`] > b[`${sortParam}`]) return 0;
-    //   return a[`${sortParam}`] > b[`${sortParam}`] ? 1 : -1;
-    // });
   }
 }

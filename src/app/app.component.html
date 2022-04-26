@@ -48,12 +48,13 @@
       +
     </div>
     <app-film-card
-      *ngFor="let film of films | appSearch: searchedValue"
+      *ngFor="let film of movies | appSearch: searchedValue"
       [film]="film"
       [isCardMode]="isCardView"
       [isEditMode]="isEditMode"
       [isDarkThemeIsActive]="isDarkThemeActive"
       (deleteRequest)="removeMovie($event)"
+      (requestToggleFav)="toggleFavorite($event)"
     ></app-film-card>
   </div>
 </main>

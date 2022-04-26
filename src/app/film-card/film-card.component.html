@@ -3,7 +3,7 @@
   [ngClass]="!isCardMode ? 'movie-item-list' : 'movie-item-card'"
   [class.dark-theme]="isDarkThemeIsActive"
 >
-  <button *ngIf="isEditMode" class="button-close" (click)="deleteMovie(film)">
+  <button *ngIf="isEditMode" class="button-close" (click)="deleteMovie(film.id)">
     +
   </button>
 
@@ -16,7 +16,7 @@
 
     <div class="bages">
       <div class="year bage">{{ film.year }}</div>
-      <div class="button-heart" [class.active]="fav" (click)="toggleFavorite()">❤</div>
+      <div class="button-heart" [class.active]="film.isFavorite" (click)="toggleFavorite(film.id)">❤</div>
       <div class="budget bage">{{ film.money | moneyShort }}</div>
     </div>
 
