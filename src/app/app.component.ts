@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import Movie from './IMovie';
+import Movie from './models/IMovie';
 import Moviee from './movie';
-import { MovieServiceService } from './movie-service.service';
+import { MovieServiceService } from './services/movie-service.service';
 
 @Component({
   selector: 'app-root',
@@ -22,9 +22,14 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMovies();
-    this.isCardView = JSON.parse(localStorage.getItem('isCardView') || 'true');
-    this.isDarkThemeActive = JSON.parse(
-      localStorage.getItem('isDarkThemeActive') || 'false'
+    // this.isCardView = JSON.parse(localStorage.getItem('isCardView') || 'true');
+    // this.isDarkThemeActive = JSON.parse(
+    //   localStorage.getItem('isDarkThemeActive') || 'false'
+    // );
+    this.isCardView = this.getVarFromLocalStorage('isCardView', true);
+    this.isDarkThemeActive = this.getVarFromLocalStorage(
+      'isDarkThemeActive',
+      false
     );
   }
 

@@ -1,13 +1,6 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  Pipe,
-  Output,
-  EventEmitter,
-} from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 // import { EventEmitter } from 'stream';
-import Movie from '../movie';
+import Movie from '../../movie';
 // import IMovie from '../IMovie';
 
 @Component({

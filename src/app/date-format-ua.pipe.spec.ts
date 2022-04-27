@@ -1,4 +1,4 @@
-import { DateFormatUaPipe } from './date-format-ua.pipe';
+import { DateFormatUaPipe } from './pipes/date-format-ua.pipe';
 
 describe('DateFormatUaPipe', () => {
   it('create an instance', () => {

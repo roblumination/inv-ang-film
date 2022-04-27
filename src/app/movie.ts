@@ -1,4 +1,4 @@
-import IMovie from './IMovie';
+import IMovie from './models/IMovie';
 
 export default class Movie implements IMovie {
   constructor(

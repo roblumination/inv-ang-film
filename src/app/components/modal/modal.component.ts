@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
-import Movie from '../movie';
+import Movie from '../../movie';
 // import { EventEmitter } from 'stream';
 
 @Component({
