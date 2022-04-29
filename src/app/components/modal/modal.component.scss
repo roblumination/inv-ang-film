@@ -21,6 +21,10 @@ button {
   &:active {
     background-color: #8886;
   }
+  &:disabled {
+    // background-color: #0f0;
+    opacity: 0.3;
+  }
 }
 
 input {

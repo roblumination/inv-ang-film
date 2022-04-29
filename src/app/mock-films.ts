@@ -5,7 +5,7 @@ export const FILMS: Movie[] = [
     'VSCode Anventures',
     1998,
     200000,
-    'film-3.jpg',
+    'film-1.jpg',
     ['Tim Bom', 'Alaba babla'],
     new Date('02-04-2022')
   ),
@@ -13,7 +13,7 @@ export const FILMS: Movie[] = [
     'Master or Main?',
     2023,
     46486,
-    'film-5.jpg',
+    'film-2.jpg',
     ['Tim Bom', 'Alaba babla'],
     new Date('03-17-2022')
   ),
@@ -21,7 +21,7 @@ export const FILMS: Movie[] = [
     'Mining on CPU',
     2015,
     3511667671,
-    'film-6.jpg',
+    'film-3.jpg',
     ['Tim Bom', 'Alaba babla'],
     new Date('05-16-2019')
   ),
@@ -29,7 +29,7 @@ export const FILMS: Movie[] = [
     'DOS',
     2015,
     3535315,
-    'film-1.jpg',
+    'film-4.jpg',
     ['Tim Bom', 'Alaba babla'],
     new Date('9-03-2018')
   ),
@@ -37,7 +37,39 @@ export const FILMS: Movie[] = [
     'Angular for kids',
     2015,
     1355,
-    'film-2.jpg',
+    'film-5.jpg',
+    ['Kids', 'Teacher', 'Angular'],
+    new Date('12-30-2002')
+  ),
+  new Movie(
+    'Angular for kids',
+    2015,
+    1355,
+    'film-6.jpg',
+    ['Kids', 'Teacher', 'Angular'],
+    new Date('12-30-2002')
+  ),
+  new Movie(
+    'Angular for kids',
+    2015,
+    1355,
+    'film-7.jpg',
+    ['Kids', 'Teacher', 'Angular'],
+    new Date('12-30-2002')
+  ),
+  new Movie(
+    'Angular for kids',
+    2015,
+    1355,
+    'film-8.jpg',
+    ['Kids', 'Teacher', 'Angular'],
+    new Date('12-30-2002')
+  ),
+  new Movie(
+    'Angular for kids',
+    2015,
+    1355,
+    'film-9.jpg',
     ['Kids', 'Teacher', 'Angular'],
     new Date('12-30-2002')
   ),

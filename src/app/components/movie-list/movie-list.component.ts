@@ -77,7 +77,7 @@ export class MovieListComponent implements OnInit {
   }
 
   showModal(): void {
-    this.sharedService.setEditMode(true);
+    this.sharedService.setModalMode(true);
   }
 
   sortFilms(sortParam: string): void {

@@ -8,7 +8,7 @@ import { LocalStorageService } from './local-storage.service';
 export class SharedService {
   darkMode: boolean;
   cardMode: boolean;
-  modalMode: boolean;
+  modalMode: boolean = false;
   editMode: boolean = false;
   changeDarkMode: Subject<boolean> = new Subject<boolean>();
   changeCardMode: Subject<boolean> = new Subject<boolean>();
@@ -18,7 +18,6 @@ export class SharedService {
   constructor(private localStorageServ: LocalStorageService) {
     this.darkMode = this.localStorageServ.getItem('darkMode');
     this.cardMode = this.localStorageServ.getItem('cardMode');
-    this.modalMode = this.localStorageServ.getItem('modalMode');
   }
 
   setDarkMode(value: boolean): void {
@@ -29,7 +28,6 @@ export class SharedService {
   }
 
   setModalMode(value: boolean): void {
-    this.localStorageServ.setItem('modalMode', value);
     this.modalMode = value;
     this.changeModalMode.next(value);
   }

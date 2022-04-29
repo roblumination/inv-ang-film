@@ -7,6 +7,14 @@
   align-items: center;
 }
 
+.nothing-text {
+  text-align: center;
+  font-weight: 500;
+  font-size: 2rem;
+  // color: #f6a;
+  opacity: 0.3;
+}
+
 .tools {
   @include flex-center();
   width: 100%;

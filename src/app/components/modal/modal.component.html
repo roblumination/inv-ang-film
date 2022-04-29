@@ -1,5 +1,5 @@
-<div *ngIf="isModal" class="modal-background">
-  <div class="modal" [class.dark-theme]="isDarkThemeActive">
+<div *ngIf="isModalMode" class="modal-background">
+  <div class="modal" [class.dark-theme]="isDarkMode">
     Adding new films<br />
     <form [formGroup]="addMovieForm" (ngSubmit)="onSumbit()">
       <div class="input-container">
@@ -54,7 +54,7 @@
 
       <div class="buttons">
         <button type="submit" [disabled]="!addMovieForm.valid">Add</button>
-        <button (click)="processCancel()">Cancel</button>
+        <button (click)="close()">Cancel</button>
       </div>
     </form>
   </div>

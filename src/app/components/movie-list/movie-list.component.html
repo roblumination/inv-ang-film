@@ -1,11 +1,15 @@
 <section class="tools">
   <div class="search">
-    <button class="favorite-button favorite-button-small">
+    <button
+      class="favorite-button favorite-button-small"
+      (click)="navigateToRouteFavMain()"
+    >
       <span *ngIf="!isFavoriteMode">❤</span>
       <span *ngIf="isFavoriteMode"><</span>
     </button>
     <input type="text" placeholder="filter" [(ngModel)]="searchedValue" />
   </div>
+
   <div class="radio">
     <input
       type="radio"
@@ -46,7 +50,9 @@
   >
     +
   </div>
-  <h1 *ngIf="!movies.length">( nothing )</h1>
+
+  <h1 class="nothing-text" *ngIf="!movies.length">( ніц )</h1>
+
   <app-film-card
     *ngFor="let movie of movies | appSearch: searchedValue"
     [movie]="movie"
