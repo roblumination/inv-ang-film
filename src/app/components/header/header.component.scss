@@ -3,6 +3,8 @@
 :host {
   position: sticky;
   top: 0;
+  z-index: 1000;
+  width: 100%;
 }
 
 header {
@@ -11,7 +13,7 @@ header {
   box-sizing: border-box;
   padding: 0 5px;
   // position: fixed;
-  z-index: 1000;
+  z-index: 10000;
   display: flex;
   background-color: #fffc;
   backdrop-filter: blur(15px);
@@ -57,6 +59,7 @@ header {
           height: 40px;
           // min-height: 40px;
           cursor: pointer;
+          user-select: none;
           text-align: center;
         }
 

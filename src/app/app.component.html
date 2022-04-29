@@ -1,10 +1,6 @@
-<app-header
-  [isEditMode]="isEditMode"
-  (changeEdit)="isEditMode = $event"
-></app-header>
-
 <main [class.dark-theme]="isDarkThemeActive">
-  <section class="tools">
+  <app-header></app-header>
+  <!-- <section class="tools">
     <div class="search">
       <input type="text" placeholder="filter" [(ngModel)]="searchedValue" />
     </div>
@@ -30,8 +26,11 @@
       <button>Favorites</button>
     </div>
 
-  </section>
-  <div
+  </section> -->
+
+  <!-- <app-movie-list [isFavoriteMode]="false"></app-movie-list> -->
+  <router-outlet></router-outlet>
+  <!-- <div
     class="movies-container"
     [ngClass]="!isCardView ? 'movies-container-list' : 'movies-container-cards'"
   >
@@ -52,7 +51,7 @@
       (deleteRequest)="removeMovie($event)"
       (requestToggleFav)="toggleFavorite($event)"
     ></app-film-card>
-  </div>
+  </div> -->
 </main>
 
 <app-modal
@@ -61,5 +60,3 @@
   (closeModal)="isModalShows = $event"
   (requestAdd)="addMovie($event)"
 ></app-modal>
-
-<router-outlet></router-outlet>

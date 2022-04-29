@@ -12,6 +12,8 @@ import { ModalComponent } from './components/modal/modal.component';
 import { AppSearchPipe } from './pipes/app-search.pipe';
 import { MovieListComponent } from './components/movie-list/movie-list.component';
 import { MovieListFavoriteComponent } from './components/movie-list-favorite/movie-list-favorite.component';
+import { ToolBarComponent } from './tool-bar/tool-bar.component';
+import { MovieListMainComponent } from './components/movie-list-main/movie-list-main.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { MovieListFavoriteComponent } from './components/movie-list-favorite/mov
     AppSearchPipe,
     MovieListComponent,
     MovieListFavoriteComponent,
+    ToolBarComponent,
+    MovieListMainComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],

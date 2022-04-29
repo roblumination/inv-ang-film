@@ -14,6 +14,10 @@ export class MovieServiceService {
     return this.movieList;
   }
 
+  getMoviesFavoriteAll(): Movie[] {
+    return this.movieList.filter((mov) => mov.isFavorite);
+  }
+
   getMovieById(id: any) {
     return this.movieList.filter((movie) => {
       return movie.id == id;

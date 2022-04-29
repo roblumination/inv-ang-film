@@ -1,4 +1,4 @@
-<header>
+<header [class.dark-theme]="isDarkMode">
   <div class="logo">Dev Films</div>
   <div class="controlls-wrapper">
     <div class="edit-wrapper" (click)="switchEditMode()">
@@ -24,7 +24,7 @@
     <div class="switcher-wrapper" (click)="switchTheme()">
       <div
         class="variants-container"
-        [class.variants-container-active]="!isDarkThemeIsActive"
+        [class.variants-container-active]="!isDarkMode"
       >
         <div class="variant">Dark</div>
         <div class="variant">Light</div>

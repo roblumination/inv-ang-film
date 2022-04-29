@@ -5,30 +5,13 @@ import { Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class LocalStorageService {
-  changeDarkMode: Subject<boolean> = new Subject<boolean>();
-  // changeCardMode: Subject<boolean> = new Subject<boolean>();
-  darkMode: boolean;
-  // cardMode: boolean = false;
+  constructor() {}
 
-  constructor() {
-    this.darkMode = this.getDarkMode();
-    // this.cardMode = this.getCardMode();
-    console.log(`[SRVR] Start value darkMode: ${this.darkMode}`);
+  getItem(item: string): any {
+    return JSON.parse(localStorage.getItem(item) || 'false');
   }
 
-  getDarkMode(): boolean {
-    return JSON.parse(localStorage.getItem('darkMode') || 'false');
+  setItem(item: string, value: any): void {
+    localStorage.setItem(item, value.toString());
   }
-  setDarkMode(isDarkMode: boolean): void {
-    localStorage.setItem('darkMode', isDarkMode.toString());
-    this.darkMode = isDarkMode;
-    this.changeDarkMode.next(isDarkMode);
-    console.log(`[SRVR]: darkInServer ${this.darkMode} | arg ${isDarkMode} `);
-  }
-  // getCardMode(): boolean {
-  //   return JSON.parse(localStorage.getItem('cardMode') || 'true');
-  // }
-  // setCardMode(isCardMode: boolean): void {
-  //   localStorage.setItem('isCardView', isCardMode.toString());
-  // }
 }

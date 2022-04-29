@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import Movie from './models/IMovie';
-import Moviee from './movie';
-import { LocalStorageService } from './services/local-storage.service';
 import { MovieServiceService } from './services/movie-service.service';
+import { SharedService } from './services/shared.service';
 
 @Component({
   selector: 'app-root',
@@ -12,10 +11,10 @@ import { MovieServiceService } from './services/movie-service.service';
 })
 export class AppComponent implements OnInit {
   isDarkThemeActive: boolean;
-  darkThemeSubsctipion: Subscription;
   isCardView: boolean = true;
   isModalShows: boolean = false;
   isEditMode: boolean = false;
+  darkThemeSubsctipion: Subscription;
 
   movies: Movie[] = [];
   // films = this.dryFilms;
@@ -23,13 +22,14 @@ export class AppComponent implements OnInit {
 
   constructor(
     private movieService: MovieServiceService,
-    private localStorageService: LocalStorageService
+    private sharedService: SharedService
   ) {
-    this.isDarkThemeActive = this.localStorageService.getDarkMode();
-    this.darkThemeSubsctipion =
-      this.localStorageService.changeDarkMode.subscribe((value) => {
+    this.isDarkThemeActive = this.sharedService.darkMode;
+    this.darkThemeSubsctipion = this.sharedService.changeDarkMode.subscribe(
+      (value) => {
         this.isDarkThemeActive = value;
-      });
+      }
+    );
   }
 
   ngOnInit(): void {

@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { SharedService } from 'src/app/services/shared.service';
 // import { EventEmitter } from 'stream';
 import Movie from '../../movie';
 // import IMovie from '../IMovie';
@@ -9,13 +10,15 @@ import Movie from '../../movie';
   styleUrls: ['./film-card.component.scss'],
 })
 export class FilmCardComponent {
-  @Input() film: any;
+  @Input() movie: any;
   @Input() isCardMode: boolean = false;
-  @Input() isDarkThemeIsActive: boolean = false;
+  @Input() isDarkMode: boolean = false;
   @Input() isEditMode: boolean = false;
   fav: boolean = false;
   @Output() deleteRequest: EventEmitter<number> = new EventEmitter<number>();
   @Output() requestToggleFav: EventEmitter<number> = new EventEmitter<number>();
+
+  constructor(private sharedService: SharedService) {}
 
   deleteMovie(id: number) {
     this.deleteRequest.emit(id);

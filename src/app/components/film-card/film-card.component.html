@@ -1,29 +1,39 @@
 <div
   class="movie-item"
   [ngClass]="!isCardMode ? 'movie-item-list' : 'movie-item-card'"
-  [class.dark-theme]="isDarkThemeIsActive"
+  [class.dark-theme]="isDarkMode"
 >
-  <button *ngIf="isEditMode" class="button-close" (click)="deleteMovie(film.id)">
+  <button
+    *ngIf="isEditMode"
+    class="button-close"
+    (click)="deleteMovie(movie.id)"
+  >
     +
   </button>
 
-  <img src="../../assets/{{ film.picture }}" alt="Film picture" />
+  <img src="../../assets/{{ movie.picture }}" alt="Film picture" />
 
-  <div *ngIf="isCardMode" class="name">{{ film.name }}</div>
+  <div *ngIf="isCardMode" class="name">{{ movie.name }}</div>
 
   <div class="description">
-    <div *ngIf="!isCardMode" class="name">{{ film.name }}</div>
+    <div *ngIf="!isCardMode" class="name">{{ movie.name }}</div>
 
     <div class="bages">
-      <div class="year bage">{{ film.year }}</div>
-      <div class="button-heart" [class.active]="film.isFavorite" (click)="toggleFavorite(film.id)">❤</div>
-      <div class="budget bage">{{ film.money | moneyShort }}</div>
+      <div class="year bage">{{ movie.year }}</div>
+      <div
+        class="button-heart"
+        [class.active]="movie.isFavorite"
+        (click)="toggleFavorite(movie.id)"
+      >
+        ❤
+      </div>
+      <div class="budget bage">{{ movie.money | moneyShort }}</div>
     </div>
 
-    <section>{{ film.actors.join(", ") }}</section>
+    <section>{{ movie.actors.join(", ") }}</section>
 
     <section class="creation-date">
-      {{ film.creationDate | dateFormatUa }}
+      {{ movie.creationDate | dateFormatUa }}
     </section>
   </div>
 </div>

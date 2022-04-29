@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-header',
@@ -8,40 +8,36 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  isDarkThemeIsActive: boolean;
-  darkThemeSubscription: Subscription;
-  isCardMode: boolean = false;
+  isDarkMode: boolean;
+  isCardMode: boolean;
+  isEditMode: boolean;
+  darkModeSubcr: Subscription;
+  cardModeSubcr: Subscription;
+  editModeSubcr: Subscription;
 
-  @Input() isEditMode: boolean = false;
-  @Output() changeEdit = new EventEmitter();
+  constructor(private sharedService: SharedService) {
+    this.isCardMode = this.sharedService.cardMode;
+    this.isDarkMode = this.sharedService.darkMode;
+    this.isEditMode = this.sharedService.editMode;
 
-  constructor(private localStorageService: LocalStorageService) {
-    this.isDarkThemeIsActive = this.localStorageService.getDarkMode();
-    this.darkThemeSubscription = localStorageService.changeDarkMode.subscribe(
-      (value) => {
-        this.isDarkThemeIsActive = value;
-      }
-    );
+    this.darkModeSubcr = sharedService.changeDarkMode.subscribe((value) => {
+      this.isDarkMode = value;
+    });
+    this.cardModeSubcr = sharedService.changeCardMode.subscribe((value) => {
+      this.isCardMode = value;
+    });
+    this.editModeSubcr = sharedService.changeEditMode.subscribe((value) => {
+      this.isEditMode = value;
+    });
   }
-
-  // ngOnInit(): void {
-
-  // }
 
   switchTheme() {
-    // this.changeTheme.emit(!this.isDarkThemeIsActive);
-    // localStorage.setItem(
-    //   'isDarkThemeActive',
-    //   (!this.isDarkThemeIsActive).toString()
-    // );
-    // console.log(`[HEAD] isdark: ${this.isDarkThemeIsActive}`);
-    this.localStorageService.setDarkMode(!this.isDarkThemeIsActive);
+    this.sharedService.setDarkMode(!this.isDarkMode);
   }
   switchCardMode() {
-    // this.changeCard.emit(!this.isCardMode);
-    // localStorage.setItem('isCardView', (!this.isCardMode).toString());
+    this.sharedService.setCardMode(!this.isCardMode);
   }
   switchEditMode() {
-    this.changeEdit.emit(!this.isEditMode);
+    this.sharedService.setEditMode(!this.isEditMode);
   }
 }

@@ -1,1 +1,59 @@
-<p>movie-list works!</p>
+<section class="tools">
+  <div class="search">
+    <button class="favorite-button favorite-button-small">
+      <span *ngIf="!isFavoriteMode">❤</span>
+      <span *ngIf="isFavoriteMode"><</span>
+    </button>
+    <input type="text" placeholder="filter" [(ngModel)]="searchedValue" />
+  </div>
+  <div class="radio">
+    <input
+      type="radio"
+      name="sort-by"
+      id="name"
+      (click)="sortFilms('name')"
+    />Name
+    <input
+      type="radio"
+      name="sort-by"
+      id="year"
+      (click)="sortFilms('year')"
+    />Year
+    <input
+      type="radio"
+      name="sort-by"
+      id="date"
+      (click)="sortFilms('date')"
+    />Date
+    <button
+      class="favorite-button favorite-button-big"
+      (click)="navigateToRouteFavMain()"
+    >
+      <span *ngIf="!isFavoriteMode">☰ Show favorites</span>
+      <span *ngIf="isFavoriteMode">< Back to main</span>
+    </button>
+  </div>
+</section>
+<div
+  class="movies-container"
+  [ngClass]="!isCardMode ? 'movies-container-list' : 'movies-container-cards'"
+>
+  <div
+    *ngIf="isEditMode"
+    (click)="showModal()"
+    class="add-new"
+    [ngClass]="!isCardMode ? 'add-new-list' : 'add-new-card'"
+  >
+    +
+  </div>
+  <h1 *ngIf="!movies.length">( nothing )</h1>
+  <app-film-card
+    *ngFor="let movie of movies | appSearch: searchedValue"
+    [movie]="movie"
+    [isCardMode]="isCardMode"
+    [isEditMode]="isEditMode"
+    [isDarkMode]="isDarkMode"
+    (deleteRequest)="removeMovie($event)"
+    (requestToggleFav)="toggleFavorite($event)"
+  ></app-film-card>
+</div>
