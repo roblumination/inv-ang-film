@@ -1,10 +1,6 @@
 <app-header
-  [isCardMode]="isCardView"
-  [isDarkThemeIsActive]="isDarkThemeActive"
   [isEditMode]="isEditMode"
-  (changeCard)="isCardView = $event"
   (changeEdit)="isEditMode = $event"
-  (changeTheme)="isDarkThemeActive = $event"
 ></app-header>
 
 <main [class.dark-theme]="isDarkThemeActive">

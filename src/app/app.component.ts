@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import Movie from './models/IMovie';
 import Moviee from './movie';
+import { LocalStorageService } from './services/local-storage.service';
 import { MovieServiceService } from './services/movie-service.service';
 
 @Component({
@@ -9,9 +11,8 @@ import { MovieServiceService } from './services/movie-service.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  constructor(private movieService: MovieServiceService) {}
-
-  isDarkThemeActive: boolean = true;
+  isDarkThemeActive: boolean;
+  darkThemeSubsctipion: Subscription;
   isCardView: boolean = true;
   isModalShows: boolean = false;
   isEditMode: boolean = false;
@@ -20,22 +21,33 @@ export class AppComponent implements OnInit {
   // films = this.dryFilms;
   searchedValue: string = '';
 
+  constructor(
+    private movieService: MovieServiceService,
+    private localStorageService: LocalStorageService
+  ) {
+    this.isDarkThemeActive = this.localStorageService.getDarkMode();
+    this.darkThemeSubsctipion =
+      this.localStorageService.changeDarkMode.subscribe((value) => {
+        this.isDarkThemeActive = value;
+      });
+  }
+
   ngOnInit(): void {
     this.getMovies();
     // this.isCardView = JSON.parse(localStorage.getItem('isCardView') || 'true');
     // this.isDarkThemeActive = JSON.parse(
     //   localStorage.getItem('isDarkThemeActive') || 'false'
     // );
-    this.isCardView = this.getVarFromLocalStorage('isCardView', true);
-    this.isDarkThemeActive = this.getVarFromLocalStorage(
-      'isDarkThemeActive',
-      false
-    );
+    // this.isCardView = this.getVarFromLocalStorage('isCardView', true);
+    // this.isDarkThemeActive = this.getVarFromLocalStorage(
+    //   'isDarkThemeActive',
+    //   false
+    // );
   }
 
-  getVarFromLocalStorage(param: string, defaultValue: any) {
-    return JSON.parse(localStorage.getItem(param) || defaultValue.toString());
-  }
+  // getVarFromLocalStorage(param: string, defaultValue: any) {
+  // //   return JSON.parse(localStorage.getItem(param) || defaultValue.toString());
+  // // }
 
   getMovies(): void {
     this.movies = this.movieService.getMoviesAll();
